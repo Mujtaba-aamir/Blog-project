@@ -143,6 +143,9 @@
                         <div class="password">
                             <label for="password">Enter Password</label>
                             <input type="password" name="password" placeholder="Enter your Password">
+                            @error("message")
+                            <p style="color:red">{{ $message }}</p>
+                            @enderror
                         </div>
                        <button type="submit">Login</button>
                     </div>
@@ -151,5 +154,10 @@
             </div>
         </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        
+    </script>
 </body>
 </html>
