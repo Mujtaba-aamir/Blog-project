@@ -167,5 +167,17 @@
             </div>
         </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        @if(session("success"))
+        swal.fire({
+            icon: "success",
+            title: "success",
+            text: '{{ session("success") }}',
+            confirmButtonText: "OK"
+        });
+        @endif
+    </script>
 </body>
 </html>
