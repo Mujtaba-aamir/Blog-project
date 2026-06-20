@@ -147,18 +147,30 @@
                         <div class="name">
                             <label for="name">Enter Full name</label>
                             <input type="text" name="name" placeholder="Enter your Name">
+                            @error("name")
+                            <p style="color: red">{{ $message }}</p>
+                            @enderror
                         </div>
                         <div class="email">
                             <label for="email">Enter Email</label>
                             <input type="text" name="email" placeholder="Enter your Email">
+                            @error("email")
+                            <p style="color: red">{{ $message }}</p>
+                            @enderror
                         </div>
                         <div class="password">
                             <label for="password">Enter Password</label>
                             <input type="password" name="password" placeholder="Enter your Password">
+                            @error("password")
+                            <p style="color: red">{{ $message }}</p>
+                            @enderror
                         </div>
                         <div class="password_confirmation">
                             <label for="password">Confirm Password</label>
                             <input type="password" name="password_confirmation" placeholder="Re-enter your Password">
+                            @error("password_confirmation")
+                            <p style="color: red">{{ $message }}</p>
+                            @enderror
                         </div>
                        <button type="submit">Register</button>
                     </div>
@@ -167,5 +179,17 @@
             </div>
         </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        @if(session("success"))
+        Swal.fire({
+            icon: "success",
+            title: "success",
+            text: '{{ session("success") }}',
+            confirmButtonText: "OK"
+        });
+        @endif
+    </script>
 </body>
 </html>
