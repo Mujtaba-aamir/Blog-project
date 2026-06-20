@@ -7,3 +7,6 @@ Route::get('/', [AuthenticationController::class, "showLoginForm"])->name("login
 Route::post('/loginUser', [AuthenticationController::class, "loginUser"])->name("loginUser");
 Route::get('/registerForm', [AuthenticationController::class, "showRegisterForm"])->name("registerForm");
 Route::post('/registerUser', [AuthenticationController::class, "registerUser"])->name("registerUser");
+
+
+Route::get("/dashboard", [AuthenticationController::class, "showDashboardPage"])->name("dashboardPage");
