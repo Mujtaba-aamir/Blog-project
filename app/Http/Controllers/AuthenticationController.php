@@ -13,7 +13,20 @@ class AuthenticationController extends Controller
         return view('auth.login');
     }
 
-    public function loginUser(Request $req) {}
+    public function loginUser(Request $req)
+    {
+        $user = $req->validate([
+            "email" => "required|email",
+            "password" => "required"
+        ]);
+
+        if (Auth::attempt($user)) {
+            return redirect()->route("dashboardPage");
+        }
+
+        else
+            return back()->withErrors(["message" => "Invalid email or password"]);
+    }
 
     public function showRegisterForm()
     {
@@ -29,5 +42,10 @@ class AuthenticationController extends Controller
         ]);
         $Register = User::create($user);
         return redirect()->back()->with('success', 'Registered Successfully, Please Log in');
+    }
+
+    public function showDashboardPage()
+    {
+        return view('admin.dashboard');
     }
 }
