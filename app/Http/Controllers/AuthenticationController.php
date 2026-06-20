@@ -24,8 +24,10 @@ class AuthenticationController extends Controller
     {
         $user = $req->validate([
             "name" => 'required|max:30|string',
-            "email" => 'required|unique:users,email',
+            "email" => 'required|email|unique:users,email',
             "password" => 'required|confirmed|min:8'
         ]);
+        $Register = User::create($user);
+        return redirect()->back()->with('success', 'Registered Successfully, Please Log in');
     }
 }
